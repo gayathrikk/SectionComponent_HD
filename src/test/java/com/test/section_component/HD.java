@@ -50,7 +50,7 @@ public class HD {
 		
 			DesiredCapabilities dc = DesiredCapabilities.chrome();
 		
-			URL url = new URL("http://172.20.23.7:5555/wd/hub");
+			URL url = new URL("http://172.12.20.99:4444/wd/hub");
 		
 			driver = new RemoteWebDriver(url, dc);
 		
@@ -123,7 +123,7 @@ public class HD {
 		
 		 if (emailInput != null && emailInput.isDisplayed()) {
 		
-		 emailInput.sendKeys("teamsoftware457@gmail.com");
+		 emailInput.sendKeys("softwareteam45@gmail.com");
 		
 		 System.out.println("Email was entered successfully.");
 		
