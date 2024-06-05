@@ -123,7 +123,7 @@ public class HD {
 		
 		 if (emailInput != null && emailInput.isDisplayed()) {
 		
-		 emailInput.sendKeys("softwareteam45@gmail.com");
+		 emailInput.sendKeys("softwaretestingteam9@gmail.com");
 		
 		 System.out.println("Email was entered successfully.");
 		
