@@ -58,126 +58,84 @@ public class HD {
 		
 			}
 			@Test(priority=1)
-		
-			public void login() throws InterruptedException
-		
-			{
-		
-			driver.get("http://apollo2.humanbrain.in/");
-		
+		public void login(@Optional("defaultURL") String URL) throws InterruptedException
+		//public void login()throws InterruptedException
+		{
+			driver.get(URL);
+			//driver.get("https://apollo2.humanbrain.in/viewer/annotation/portal");
 			driver.manage().window().maximize();
-		
-		    String currentURL = driver.getCurrentUrl();
-		 
-		    System.out.println("Current URL: " + currentURL);
-		
-			WebDriverWait wait = new WebDriverWait(driver, 60);
-		
-			driver.switchTo().defaultContent(); // Switch back to default content
-		
-			WebElement viewerElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='Viewer']")));
-		
-			if (viewerElement.isEnabled() && viewerElement.isDisplayed()) {
-		
-			viewerElement.click();
-		
-			System.out.println("Viewer icon is clicked");
-		
-			} else {
-		
-			System.out.println("Viewer icon is not clickable");
-		
-			}	
-		 String parentWindow = driver.getWindowHandle();
-		
-		 WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=' Log In ']")));
-		
-		 if (loginButton != null) {
-		
-		 loginButton.click();
-		
-		 System.out.println("Login button clicked successfully.");
-		
-		 } else {
-		
-		 System.out.println("Login button is not clicked.");
-		
-		 }
-		 wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-		
-			Set<String> allWindows = driver.getWindowHandles();
-		
-		 for (String window : allWindows) {
-		
-		 if (!window.equals(parentWindow)) {
-		
-		 driver.switchTo().window(window);
-		
-		 break;
-		
-		 }
-		
-		 }
-		
-		 WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='email']")));
-		
-		 if (emailInput != null && emailInput.isDisplayed()) {
-		
-		 emailInput.sendKeys("softwaretestingteam9@gmail.com");
-		
-		 System.out.println("Email was entered successfully.");
-		
-		 } else {
-		
-		 System.out.println("Email was not entered.");
-		
-		 }
-		 WebElement nextButton1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']")));
-		
-		 if (nextButton1 != null) {
-		
-		 nextButton1.click();
-		
-		 System.out.println("Next button 1 is clicked.");
-		
-		 } else {
-		
-		 System.out.println("Next button 1 is not clicked.");
-		
-		 }
-		 WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@aria-label='Enter your password']")));
-		
-		 passwordInput.sendKeys("Health#123");
-		
-		 if (passwordInput.getAttribute("value").equals("Health#123")) {
-		
-		 System.out.println("Password was entered successfully.");
-		
-		 } else {
-		
-		 System.out.println("Password was not entered.");
-		
-		 }
-		
-		 WebElement nextButton2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']")));
-		
-		 if (nextButton2 != null) {
-		
-		 nextButton2.click();
-		
-		 System.out.println("Next button 2 is clicked.");
-		
-		 } else {
-		
-		 System.out.println("Next button 2 is not clicked.");
-		
-		 }
-		 driver.switchTo().window(parentWindow);
-		
-		 System.out.println("Login successfully");
-		 System.out.println("************************Login validation done***********************");
-		
-			}
+	        String currentURL = driver.getCurrentUrl();
+	        System.out.println("Current URL: " + currentURL);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+	    	driver.switchTo().defaultContent(); // Switch back to default content
+	    	WebElement viewerElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='Viewer']")));
+	    	if (viewerElement.isEnabled() && viewerElement.isDisplayed()) {
+	    	    viewerElement.click();
+	    	    System.out.println("Viewer icon is clicked");
+	    	} else {
+	    	    System.out.println("Viewer icon is not clickable");
+	    	}
+	    	checkConsoleLog();
+	
+	        String parentWindow = driver.getWindowHandle();
+	        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=' Log In ']")));
+	        if (loginButton != null) {
+	            loginButton.click();
+	            System.out.println("Login button clicked successfully.");
+	        } else {
+	            System.out.println("Login button is not clicked.");
+	        }
+	        checkConsoleLog();
+		  wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+		  Set<String> allWindows = driver.getWindowHandles();
+	        for (String window : allWindows) {
+	            if (!window.equals(parentWindow)) {
+	                driver.switchTo().window(window);
+	                break;
+	            }
+	        }
+	        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='email']")));
+	        if (emailInput != null && emailInput.isDisplayed()) {
+	            emailInput.sendKeys("teamsoftware457@gmail.com");
+	            System.out.println("Email was entered successfully.");
+	        } else {
+	           System.out.println("Email was not entered.");
+	        }
+	        checkConsoleLog();
+	
+	        WebElement nextButton1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']")));
+	        if (nextButton1 != null) {
+	            nextButton1.click();
+	            System.out.println("Next button 1 is clicked.");
+	        } else {
+	            System.out.println("Next button 1 is not clicked.");
+	        }
+	        checkConsoleLog();
+	        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@aria-label='Enter your password']")));
+	        passwordInput.sendKeys("Health#123");
+	        if (passwordInput.getAttribute("value").equals("Health#123")) {
+	            System.out.println("Password was entered successfully.");
+	        } else {
+	            System.out.println("Password was not entered.");
+	        }
+	        checkConsoleLog();
+	        
+	        WebElement nextButton2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']")));
+	        if (nextButton2 != null) {
+	            nextButton2.click();
+	            System.out.println("Next button 2 is clicked.");
+	        } else {
+	            System.out.println("Next button 2 is not clicked.");
+	        }
+	        checkConsoleLog();
+	
+	        driver.switchTo().window(parentWindow);
+	        System.out.println("Login successfully");
+	        checkConsoleLog();
+	        
+	        System.out.println("************************Login validation done***********************");
+		        
+		}
 		
 			@Test(priority=2)
 		
